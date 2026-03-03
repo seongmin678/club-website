@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAD-K 동아리 소개 - University of Wisconsin-Madison</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body, h1, h2, h3, h4, h5, p, ul {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', 'Malgun Gothic', sans-serif;
+            color: #333;
+            background-image: url('https://news.wisc.edu/content/uploads/2017/10/DSC_7952.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        .container {
+            width: 1100px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .page-wrapper {
+            background-color: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 0 20px rgba(0,0,0,0.15);
+            margin: 0 auto;
+            border-radius: 5px;
+            overflow: hidden;
+            min-height: 100vh;
+        }
+        .main-header {
+            padding: 20px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .main-nav a {
+            margin-left: 15px;
+            color: #555;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            cursor: pointer; 
+        }
+        .main-nav a:hover {
+            color: #c5050c;
+        }
+        .main-nav a.lang-active {
+            color: #c5050c;
+            
+        }
+        .page-title-bar {
+            background-color: #c5050c;
+            padding: 30px 0;
+        }
+        .page-title-bar h1 {
+            color: #fff;
+            font-size: 32px;
+        }
+        .main-content {
+            padding: 40px 0;
+        }
+        .breadcrumbs {
+            font-size: 14px;
+            color: #777;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+        .breadcrumbs b {
+            color: #c5050c;
+        }
+        .content-body h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #333;
+        }
+        .content-body h3 {
+            font-size: 22px;
+            color: #444;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        .wisconsin-logo {
+            mix-blend-mode: multiply;
+            background-color: transparent;
+        }
+        .main-image-link {
+            width: 25%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px;
+        }
+        .main-club-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 5px;
+            mix-blend-mode: multiply;
+            background-color: transparent;
+        }
+        .content-body p {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .info-cards-container {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .info-card {
+            background-color: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            flex: 1;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .info-card a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .info-card a:hover {
+            color: #c5050c;
+        }
+        .info-card h4 {
+            color: #c5050c;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        .officer-cards-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .officer-card {
+            background-color: #f9f9f9;
+            border-left: 4px solid #c5050c;
+            padding: 20px;
+            border-radius: 0 5px 5px 0;
+        }
+        .officer-card a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .officer-card a:hover {
+            color: #c5050c;
+        }
+        .officer-card h5 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        .collapsible-title {
+            background-color: #f1f1f1;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 22px;
+            font-family: 'Roboto', 'Malgun Gothic', sans-serif;
+            font-weight: bold;
+            margin-top: 40px;
+            margin-bottom: 0;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, border-radius 0.1s ease;
+        }
+        .collapsible-title:hover {
+            background-color: #ddd;
+        }
+        .collapsible-title.active {
+            border-radius: 5px 5px 0 0;
+        }
+        .collapsible-title span {
+            float: right;
+            transition: transform 0.3s ease;
+        }
+        .collapsible-title.active span {
+            transform: rotate(180deg);
+        }
+        .collapsible-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            background-color: #f9f9f9;
+            border-radius: 0 0 5px 5px;
+        }
+        .collapsible-content .photo-gallery {
+            padding: 20px;
+        }
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 0;
+        }
+        .photo-gallery img {
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            mix-blend-mode: multiply;
+        }
+        .photo-gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #c5050c;
+            color: #fff;
+            padding: 12px 25px;
+            margin: 10px 10px 10px 0;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #a0050a;
+            transform: translateY(-2px);
+        }
+        .main-footer {
+            background-color: #333;
+            color: #aaa;
+            padding: 30px 0;
+            font-size: 14px;
+            text-align: center;
+        }
+        .main-footer p {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-wrapper">
+        <!-- Main Header -->
+        <header class="main-header">
+            <div class="container">
+                <div class="logo">
+                    <img class='wisconsin-logo' src="images/wisconsin logo (1).jpg" alt="University of Wisconsin-Madison Logo">
+                </div>
+                <nav class="main-nav">
+            
+                    <a onclick="switchLanguage('ko')" class="lang-ko lang-active">Korean</a>
+                    <a onclick="switchLanguage('en')" class="lang-en">English</a>
+                </nav>
+            </div>
+        </header>
+
+        <div class="page-title-bar">
+            <div class="container">
+                <h1 data-ko="MAD-K 소개" data-en="About MAD-K">Mad-K 소개</h1>
+            </div>
+        </div>
+
+        <main class="main-content">
+            <div class="container">
+                <div class="breadcrumbs">
+                    <span data-ko="홈" data-en="Home">홈</span> &gt; 
+                    <span data-ko="대학생활" data-en="Campus Life">대학생활</span> &gt; 
+                    <span data-ko="동아리부서" data-en="Clubs">동아리부서</span> &gt; 
+                    <b><span data-ko="소개" data-en="About">소개</span></b>
+                </div>
+
+                <div class="content-body">
+                    <h2>MAD-K</h2>
+                    <a href="https://www.instagram.com/mad_k_united?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="main-image-link">
+                        <img class="main-club-image" src="images/New MADK LOGO.png" alt="MAD-K club logo">
+                    </a>
+                    <h3 data-ko="신청방법/링크" data-en="How to Apply / Links">신청방법/링크</h3>
+                    <div class="button-container">
+                        <a href="https://www.instagram.com/mad_k_united?igsh=MWN3bjl5dGNxdWwzMQ==" class="cta-button" target="_blank" data-ko="인스타 문의" data-en="Instagram Inquiry">인스타 문의</a>
+                        <a href="https://invite.kakao.com/tc/cPfKzUq9cm" class="cta-button" target="_blank" data-ko="매드케이 단톡방 초대링크" data-en="KakaoTalk Group Chat Invite">매드케이 단톡방 초대링크</a>
+                    </div>
+
+                    <h3 data-ko="활동 목적 및 소개" data-en="Mission and Introduction">활동 목적 및 소개</h3>
+                    <p data-ko="매디슨 한인 축구클럽인 MAD-K는 실력과 무관하게 축구를 좋아하는 사람이라면 누구나 참여할 수 있으며, 매주 토요일에 즐겁게 활동하고 있습니다. 학기 중에는 대회에 참가하고 바베큐 파티와 같은 재밌는 활동들을 통해 한국인들과 친해질 수 있습니다." data-en="The Madison Korean soccer club, MAD-K, is open to anyone who loves soccer, regardless of skill level, and we have fun activities every Saturday. During the semester, we participate in competitions and build friendship within the Korean community through social events like barbecue parties.">
+                        매디슨 한인 축구클럽인 MAD-K는 실력과 무관하게 축구를 좋아하는 사람이라면 누구나 참여할 수 있으며, 매주 토요일에 즐겁게 활동하고 있습니다. 학기 중에는 대회에 참가하고 바베큐 파티와 같은 재밌는 활동들을 통해 한국인들과 친해질 수 있습니다. 
+                    </p>
+
+                    <div class="info-cards-container">
+                        <div class="info-card">
+                            <h4 data-ko="언제 ⏰" data-en="When ⏰">언제 ⏰</h4>
+                            <p data-ko="매주 토요일 오전 9-11시" data-en="Every Saturday 9-11 AM">매주 토요일 오전 9-11시</p>
+                        </div>
+                        <div class="info-card">
+                            <h4 data-ko="어디서 📍" data-en="Where 📍">어디서 📍</h4>
+                            <p>
+                                <a href="https://maps.app.goo.gl/WUG1xx7qmuzuXG1R9" target="_blank">Near West Field</a>
+                            </p>
+                        </div>
+                        <div class="info-card">
+                            <h4 data-ko="누가 ⚽️" data-en="Who ⚽️">누가 ⚽️</h4>
+                            <p data-ko="실력 무관! 누구나 환영" data-en="All skill levels! Everyone is welcome">실력 무관! 누구나 환영</p>
+                        </div>
+                    </div>
+
+                    <h3 data-ko="임원진 소개" data-en="Meet the Officers">임원진 소개</h3>
+                    <div class="officer-cards-container">
+                        <div class="officer-card">
+                             <h5><a href="https://www.instagram.com/haeseung_pyun?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" data-ko="회장: 편해승" data-en="President: Haeseung Pyun">회장: 편해승</a> </h5>
+                            <p data-ko="가입 문의나 궁금한 점이 있으시면 언제든 편하게 연락 주세요!" data-en="If you have any questions about joining, please feel free to contact me anytime!">가입 문의나 궁금한 점이 있으시면 언제든 편하게 연락 주세요!</p>
+                        </div>
+                        <div class="officer-card">
+                            <h5><a href="https://www.instagram.com/junglibb_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" data-ko="주장: 정립" data-en="Captain: Libb Jung">주장: 정립</a> </h5>
+                            <p data-ko="매주 토요일, 경기장에서 여러분을 기다리겠습니다!" data-en="I'll be waiting for you on the field every Saturday!">매주 토요일, 경기장에서 여러분을 기다리겠습니다!</p>
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="collapsible-title" data-ko="활동 사진들 보기" data-en="View Activity Photos">
+                        활동 사진들 보기  <span>&darr;</span>
+                    </button>
+                    <div class="collapsible-content">
+                        <div class="photo-gallery">
+                            <img src="images/MAD-K4 (2).jpg" alt="Team photo after a game">
+                            <img src="images/MAD-K2 (1).jpg" alt="MAD-K team in action during a match">
+                            <img src="images/MAD-K3 (2).jpg" alt="Players celebrating a goal">
+                            <img src="images/MAD-K1 (1).jpg" alt="Close-up of a game in progress">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+        <footer class="main-footer">
+            <div class="container">
+                <p>University of Wisconsin-Madison | 500 Lincoln Dr, Madison, WI 53706</p>
+                <p>&copy; 2025 University of Wisconsin-Madison. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript Sections -->
+    <script>
+        var collapsibles = document.querySelectorAll(".collapsible-title");
+        collapsibles.forEach(function(item) {
+            item.addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null; 
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px"; // Expand
+                } 
+            });
+        });
+
+        // --- 2. Language Switcher Script ---
+        function switchLanguage(lang) {
+            // Find all elements that have translation data
+            const elementsToTranslate = document.querySelectorAll('[data-ko], [data-en]');
+
+            elementsToTranslate.forEach(el => {
+                // Check if a translation exists for the selected language
+                if (el.dataset[lang]) {
+                     // Check if the element is the collapsible button to handle the arrow span
+                    if (el.classList.contains('collapsible-title')) {
+                        const arrowSpan = el.querySelector('span');
+                        el.textContent = el.dataset[lang] + '  '; // Add space before span
+                        el.appendChild(arrowSpan);
+                    } else {
+                        el.innerHTML = el.dataset[lang];
+                    }
+                }
+            });
+
+            document.querySelector('.lang-ko').classList.remove('lang-active');
+            document.querySelector('.lang-en').classList.remove('lang-active');
+            document.querySelector(`.lang-${lang}`).classList.add('lang-active');
+
+            document.documentElement.lang = lang;
+        }
+    </script>
+
+</body>
+</html>
+

@@ -1,0 +1,230 @@
+:root{
+  --ink:hsl(0, 0%, 100%);
+  --bg:hsl(0, 0%, 0%);
+  --muted:hsl(0, 0%, 81%);
+  --accent:hsl(0, 0%, 100%);
+  --radius:16px;
+  --gap:1.25rem;
+  --container:1100px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  color:var(--ink);
+  background:var(--bg);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans KR, Apple SD Gothic Neo, sans-serif;
+  line-height:1.6;
+}
+a{color:var(--ink); text-decoration:none}
+a:hover{opacity:.9}
+.container{width:min(100% - 2rem, var(--container)); margin-inline:auto}
+
+.site-header{
+  position:sticky; top:0; z-index:50;
+  backdrop-filter:saturate(140%) blur(8px);
+  background:rgba(0,0,0,.6);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.nav{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:.9rem 0;
+}
+.brand{
+  display:flex; gap:.6rem; align-items:center; font-weight:800; letter-spacing:.5px;
+}
+.brand img{width:36px; height:36px; border-radius:50%; object-fit:cover}
+.nav a.btn{border:1px solid rgba(255,255,255,.2); padding:.55rem .9rem; border-radius:999px}
+.nav-links{display:flex; gap:.75rem; align-items:center; flex-wrap:wrap}
+.nav-links a{padding:.4rem .6rem; border-radius:10px}
+.nav-links a:hover{background:rgba(255,255,255,.08)}
+
+section{padding:clamp(2rem,6vw,4rem) 0}
+h1,h2,h3{line-height:1.2; margin:0 0 .6rem}
+.muted{color:var(--muted)}
+.lead{font-size:clamp(1rem,2.4vw,1.25rem); color:#d9d9d9}
+
+.hero{
+  padding:clamp(3rem,9vw,8rem) 0 clamp(2rem,7vw,5rem);
+  text-align:center;
+}
+.hero h1{
+  font-size:clamp(1.8rem,6vw,3rem);
+  letter-spacing:.4px;
+  margin-bottom:.5rem;
+}
+.cta{
+  display:inline-flex; gap:.6rem; align-items:center; justify-content:center;
+  margin-top:1rem;
+  padding:.75rem 1.1rem; border-radius:999px;
+  background:var(--accent); color:#000; border:1px solid rgba(255,255,255,.1);
+  font-weight:700;
+}
+.cta:hover{filter:brightness(.92)}
+
+.grid{
+  display:grid; gap:var(--gap);
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  margin-top:1.2rem;
+}
+.card{
+  border:1px solid rgba(255,255,255,.12);
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border-radius:var(--radius);
+  padding:1.1rem 1.25rem;
+  box-shadow:0 10px 40px rgba(0,0,0,.35) inset, 0 1px 0 rgba(255,255,255,.05);
+  transform:translateZ(0);
+  transition:transform .6s ease, box-shadow .6s ease;
+}
+.card:hover{transform:translateY(-2px); box-shadow:0 14px 50px rgba(0,0,0,.5) inset, 0 2px 0 rgba(255,255,255,.05)}
+
+
+.marquee-wrap{
+  overflow:hidden; border-radius:var(--radius);
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.02);
+  position:relative;
+}
+.marquee{
+  display:flex; gap:1rem; align-items:center; padding:1rem;
+  width:max-content;
+  animation:slide 40s linear infinite;
+}
+.marquee:hover{animation-play-state:paused}
+.marquee img, .marquee video{
+  height:250px; width:auto; border-radius:12px; display:block;
+  object-fit:cover; border:1px solid rgba(255,255,255,.12);
+  filter:saturate(110%);
+  transition:transform 1s ease, filter .6s ease, opacity .6s ease;
+  opacity:.95;
+}
+.marquee img:hover, .marquee video:hover{
+  transform:translateY(-4px) scale(1.02);
+  filter:saturate(130%);
+  opacity:1;
+}
+@keyframes slide{
+  from{ transform:translateX(0) }
+  to  { transform:translateX(-50%) }
+}
+
+
+.gallery{
+  display:grid; gap:1rem; margin-top:1rem;
+  grid-template-columns:repeat(auto-fit, minmax(500px, 1fr));
+}
+.float{
+  position:relative; overflow:hidden; border-radius:14px;
+  border:1px solid rgba(255,255,255,.12);
+  aspect-ratio: 4 / 3;
+  background:rgba(255,255,255,.03);
+}
+.float > img{
+  width:100%; height:100%; object-fit:cover; display:block;
+  transform:translateZ(0);
+  animation: drift 9s ease-in-out infinite;
+  filter:saturate(112%) contrast(102%);
+}
+.float:nth-child(2n) > img{ animation-duration: 11s }
+.float:nth-child(3n) > img{ animation-duration: 13s }
+@keyframes drift{
+  0%  { transform:scale(1.05) translateY(0) }
+  50% { transform:scale(1.06) translateY(-6px) }
+  100%{ transform:scale(1.05) translateY(0) }
+}
+
+.sets{
+  columns: 2 320px; column-gap: 1.5rem;
+  margin-top:.5rem;
+}
+.sets li{
+  break-inside:avoid; padding:.35rem .6rem; margin:.2rem 0;
+  border-left:2px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.03);
+  border-radius:10px;
+  list-style:none;
+}
+
+.contact{
+  display:grid; gap:var(--gap);
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  align-items:start;
+}
+.contact .block{
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--radius);
+  padding:1rem 1.25rem;
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+}
+.contact a.inline{
+  border-bottom:1px dashed rgba(255,255,255,.4);
+  padding-bottom:2px;
+}
+
+.ig-logo{
+  display:inline-flex; align-items:center; gap:.55rem;
+  padding:.5rem .8rem; border-radius:999px;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(255,255,255,.06);
+}
+.ig-logo img{width:50px; height:50px; border-radius:4px; object-fit:cover}
+
+.reveal{opacity:1; transform:translateY(10px); transition: opacity .9s ease, transform .9s ease}
+.reveal.is-visible{opacity:1; transform:none}
+
+@media (prefers-reduced-motion: reduce){
+  .marquee, .float > img{animation:none !important}
+  .reveal{transition:none}
+}
+
+footer{
+  border-top:1px solid rgba(255,255,255,.12);
+  color:#bdbdbd; padding:1.25rem 0; text-align:center;
+}
+
+/* ---------- YouTube Modal ---------- */
+.yt-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+.yt-modal.active { display: flex; }
+
+.yt-modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 720px;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0,0,0,0.7);
+}
+.yt-modal iframe {
+  width: 100%;
+  height: 405px;
+  border: none;
+  display: block;
+}
+.yt-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 2rem;
+  color: #fff;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+}
+.yt-thumb {
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.yt-thumb:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
